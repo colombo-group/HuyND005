@@ -28,7 +28,7 @@
 		<?php
 			for($i=0;$i<$a;$i++){
 				if($name_chart[$i]!=""){
-					echo $name_chart[$i].": <input required type='number' name='".$i."' value='".$val[$i]."'><br>";
+					echo $name_chart[$i].": <input required type='number' min='1' max='100' name='".$i."' value='".$val[$i]."'><br>";
 				}
 			}
 		?>
@@ -36,10 +36,14 @@
 	<hr>
 	<div>
 		<?php
+		echo "<table border='1'>";
 			for($i=0;$i<$a;$i++){
+
 				if($val[$i]!=""){
 					$check="check";
-					echo $name_chart[$i].": <div style='margin-top:20px;background:red;height:20px;font-size:10px;width:".$val[$i]."px;'>".$val[$i]." %</div>&nbsp";
+					echo "<tr style='border:1px solid black;'><td >";
+					echo $name_chart[$i]."</td>";
+					echo "<td style='font-size:10px'><div style='float:left;background:red;height:10px;width:".$val[$i]."px'></div>".$val[$i]." %</td></tr>";
 				}
 			}
 		}?>

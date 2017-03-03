@@ -4,6 +4,14 @@
 	if($_SERVER['REQUEST_METHOD']=="POST"){
 		$number1=$_POST['number1'];
 		$number2=$_POST['number2'];
+		if(!is_numeric($number2)){
+			echo "<script>alert('So khong hop le! Nhap lai!')</script>";
+			return header('bai6.php');
+		}
+		if(!is_numeric($number1)){
+			echo "<script>alert('So khong hop le! Nhap lai!')</script>";
+			return header('bai6.php');
+		}
 		$equal=0;
 		if(isset($_POST['plus'])){
 			$equal=$number1+$number2;
@@ -36,26 +44,28 @@
 </head>
 <style type="text/css">
 	body{
-		margin: 200px;
+		width: 80%;
+		margin:0 auto;
+
 	}
 	input{
-		width: 80px;
-		border-top: 1px solid black;
-		border-left: 1px solid black;
+		/*width: px;*/
+		
+		border: 1px solid black;
 	}
 	
 </style>
 <body>
 <form method="post">
-<input required type="number" value="<?php echo isset($number1)?$number1:""; ?>" id="number1" name="number1">
-<input type="submit" value="+" name="plus">
-<input type="submit" value="-" name="div">
-<input type="submit" value="x" name="mul">
-<input type="submit" value="/" name="sub">
-<input type="submit" value="^" name="pow">
-<input required type="number" value="<?php echo isset($number2)?$number2:""; ?>" id="number2" name="number2">
+<input required type="text" value="<?php echo isset($number1)?$number1:""; ?>" placeholder="Nhap so thu nhat!" id="number1" name="number1">
+<input type="submit" value="+" name="plus" style="border:1px solid black; width: 30px">
+<input type="submit" value="-" name="div" style="border:1px solid black; width: 30px">
+<input type="submit" value="x" name="mul" style="border:1px solid black; width: 30px">
+<input type="submit" value="/" name="sub" style="border:1px solid black; width: 30px">
+<input type="submit" value="^" name="pow" style="border:1px solid black; width: 30px">
+<input required type="text" placeholder="Nhap so thu hai!" value="<?php echo isset($number2)?$number2:""; ?>" id="number2" name="number2">
 <span>=</span>
-<input type="number" value="<?php echo isset($equal)?$equal:""; ?>" disabled  id="equal">
+<input type="text" value="<?php echo isset($equal)?$equal:""; ?>" placeholder="Ket qua!" disabled  id="equal">
 </form>
 <!-- <script type="text/javascript" src="caculator.js"></script> -->
 </body>

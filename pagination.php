@@ -76,7 +76,6 @@
 					$page_finish=$total_page;
 
 				}
-
 				for($i=$page_start;$i<=$page_finish;$i++){
 					if($i==$page_cur){
 						// echo "<span><a style='text-decoration:underline;' href='".$url."?a=".$a."&b=".$b."&c=".$c."&page=".$i."'>".$i."</a></span>&nbsp;&nbsp;";
