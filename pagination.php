@@ -58,8 +58,12 @@
 						$page_start=$page_cur-2;
 						$page_finish=$page_cur+2;
 					}
+					else if($page_cur>4&&$page_cur<$total_page-1){
+						$page_start=$page_cur-2;
+						$page_finish=$total_page;
+					}
 					else {
-						$page_start=$page_cur-4;
+						$page_start=$page_cur-3;
 						$page_finish=$total_page;
 					}
 					if($page_cur>4){
