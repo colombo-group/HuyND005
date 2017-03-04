@@ -7,6 +7,7 @@
 		$a=$_POST['numa'];
 		$b=$_POST['numb'];
 		$c=$_POST['numc'];
+		// echo "ok";
 	}
 	else{
 		$a=isset($_GET['a'])?$_GET['a']:" ";
@@ -14,6 +15,8 @@
 		$c=isset($_GET['c'])?$_GET['c']:" ";
 	}
 	function pagi($a,$b,$c,$url,$page_cur){
+		// $page_cur=1;
+		// if()
 		$comval=array();
 		$count=0;
 		$link_page="";
@@ -26,6 +29,7 @@
 		$total_record=count($comval);
 		// echo $page_cur;
 		if($total_record>1){
+			// echo $b;
 			$val_start=($page_cur-1)*$c;
 			$val_finish=$page_cur*$c;
 			echo("Gia tri thoa man la: <br>");
@@ -110,15 +114,15 @@
 <form method="post" action="">
 <div class="row">
 	<span>Num A</span>&nbsp;&nbsp;
-	<input type="number" value="<?php echo isset($a)?$a:''; ?>" required name="numa">
+	<input type="number" min="1" value="<?php echo isset($a)?$a:''; ?>" required name="numa">
 </div>
 <div class="row">
 	<span>Num B</span>&nbsp;&nbsp;
-	<input type="number" value="<?php echo isset($b)?$b:''; ?>" required name="numb">
+	<input type="number" min="1" value="<?php echo isset($b)?$b:''; ?>" required name="numb">
 </div>
 <div class="row">
 	<span>Num C</span>&nbsp;&nbsp;
-	<input type="number" value="<?php echo isset($c)?$c:''; ?>" required name="numc">
+	<input type="number" min="1" value="<?php echo isset($c)?$c:''; ?>" required name="numc">
 </div>
 <div class="row">
 	<input type="submit"  name="sub" value="Show">
@@ -126,7 +130,12 @@
 </form>
 <?php
 if($page_cur>0){
+	// echo $b;
 	if($a>$b&&$c>0){
+		//reset page_cur
+		if(isset($_POST['sub'])){
+			$page_cur=1;
+		}
 		$url="pagination.php";
 		pagi($a,$b,$c,$url,$page_cur);
 	}
@@ -147,7 +156,6 @@ if($page_cur>0){
 		echo "<script>alert('So nhap vao phai lon hon 0');</script>";
 		return 0;
 	}
-	
 }
 else{
 	echo "<script>alert('Error')</script>";

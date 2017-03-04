@@ -4,34 +4,38 @@
 	if($_SERVER['REQUEST_METHOD']=="POST"){
 		$number1=$_POST['number1'];
 		$number2=$_POST['number2'];
-		if(!is_numeric($number2)){
+		if(!is_numeric($number1)||!is_numeric($number2)){
+			if(!is_numeric($number2)){
 			echo "<script>alert('So khong hop le! Nhap lai!')</script>";
-			return header('bai6.php');
+			
 		}
-		if(!is_numeric($number1)){
-			echo "<script>alert('So khong hop le! Nhap lai!')</script>";
-			return header('bai6.php');
-		}
-		$equal=0;
-		if(isset($_POST['plus'])){
-			$equal=$number1+$number2;
-		}
-		if(isset($_POST['div'])){
-			$equal=$number1-$number2;
-		}
-		if(isset($_POST['mul'])){
-			$equal=$number1*$number2;
-		}
-		if(isset($_POST['sub'])){
-			if($number2==0){
-				echo "<script>alert('So thu 2 phai lon hon 0');</script>";
-				// header('bai6.php');
-				return 1;
+			if(!is_numeric($number1)){
+				echo "<script>alert('So khong hop le! Nhap lai!')</script>";
+				
 			}
-			$equal=$number1/$number2;
 		}
-		if(isset($_POST['pow'])){
-			$equal=pow($number1, $number2);
+		else{
+			$equal=0;
+			if(isset($_POST['plus'])){
+				$equal=$number1+$number2;
+			}
+			if(isset($_POST['div'])){
+				$equal=$number1-$number2;
+			}
+			if(isset($_POST['mul'])){
+				$equal=$number1*$number2;
+			}
+			if(isset($_POST['sub'])){
+				if($number2==0){
+					echo "<script>alert('So thu 2 phai lon hon 0');</script>";
+					// header('bai6.php');
+					
+				}
+				else $equal=$number1/$number2;
+			}
+			if(isset($_POST['pow'])){
+				$equal=pow($number1, $number2);
+			}
 		}
 	}
 ?>
