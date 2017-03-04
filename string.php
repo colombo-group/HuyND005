@@ -15,7 +15,7 @@ if($_SERVER['REQUEST_METHOD']=="POST"){
 		preg_match_all($pattern_word, $para, $matches_word,PREG_OFFSET_CAPTURE);
 		$check=sizeof($matches_char[0]);
 		//kiem tra xem ki tu can tim co ton tai khong.
-		if($check>0){
+			if($check>0){
 			//mang cac tu chua ki tu can tim can in dam
 			$pattern_word_rep=array();
 			//mang cac tu can tim
